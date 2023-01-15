@@ -1,71 +1,88 @@
-let id = 0;
 let myLibrary = [];
-// function Book(title,author,pages) {
-//   // the constructor...
-//   this.title = title;
-//   this.author = author;
-//   this.pages = pages;
 
-// }
-// function addBookToLibrary(book) {
-//   myLibrary.push(book)
-//   // do stuff here
-// }
-// let book = new Book("The Idiot", "Dovestesky", 600)
-// let book2 = new Book("The Idiot", "Dovestesky", 600)
-// let book3 = new Book("The Idiot", "Dovestesky", 600)
-// addBookToLibrary(book)
-// addBookToLibrary(book2)
-// addBookToLibrary(book3)
-// console.log(myLibrary)
+function Book(name, author, pages, status){
+    this.name = name;
+    this.author = author;
+    this.pages = pages;
+    this.status = status
+    
+}
 
-let form = document.getElementById('form')
-form.addEventListener('submit', (e) =>{
-  e.preventDefault();
+Book.prototype.info = function(){
+    if(this.status === false){
+        return console.log(this.name + " " + "by " + this.author + "," + this.pages + " pages, " + "not read yet" )
+    }
+    else{
+        return console.log(this.name + " " + "by " + this.author + "," + this.pages + " pages, "+ "read" )
+    }
+}
 
-  let title = document.getElementById("title").value;
- let author = document.getElementById("author").value;
- let pages = document.getElementById('pages').value;
+function addBookToLibrary(Book) {
+  myLibrary.push(Book);
 
- const books = document.getElementsByClassName("books-container")[0];
- books.innerHTML = null;
- myLibrary.push({title,author,pages,id});
- id++;
- myLibrary.map((obj)=>{
-  let book = document.createElement("div");
-  book.className = "book";
-  const p1 = document.createElement("p");
-  p1.innerText = obj.title;
-  const p2 = document.createElement("p")
-  p2.innerText = obj.author;
-  const p3 = document.createElement("p")
-  p3.innerText  = obj.pages;
-  book.appendChild(p1);
-  book.appendChild(p2);
-  book.appendChild(p3);
-  books.append(book);
- })
- console.log(myLibrary);
-closeForm();
+}
+
+
+
+
+
+function displayBooks(){
+    for(let x = 0; x < myLibrary.length; x++){
+        myLibrary[x].info();
+    }
+}
+
+function createBookForm() {
+    let content = document.querySelector(".content");
+    
+
+    var form = document.createElement("form");
+    form.classList.add("book-form")
+    
+    var nameField = document.createElement("input");
+    nameField.classList.add("formfield")
+    nameField.setAttribute("type", "text");
+    nameField.setAttribute("placeholder", "Name");
+    
+    
+    var authorField = document.createElement("input");
+    authorField.classList.add("formfield")
+    authorField.setAttribute("type", "text");
+    authorField.setAttribute("placeholder", "Author");
+    
+
+    
+    var pagesField = document.createElement("input");
+    pagesField.classList.add("formfield")
+    pagesField.setAttribute("type", "text");
+    pagesField.setAttribute("placeholder", "Pages");
+    
+  
+    var readingStatusField = document.createElement("input");
+    readingStatusField.classList.add("formfield")
+    readingStatusField.setAttribute("type", "text");
+    readingStatusField.setAttribute("placeholder", "Reading Status");
+    
+    
+    var submitButton = document.createElement("input");
+    submitButton.classList.add("formfield")
+    submitButton.setAttribute("type", "submit");
+    submitButton.setAttribute("value", "Submit");
+    
+    form.appendChild(submitButton);
+    form.appendChild(readingStatusField);
+    form.appendChild(pagesField);
+    form.appendChild(authorField);
+    form.appendChild(nameField);
+    
+    
+    
+    
+    content.appendChild(form);
+  }
+  
+let addBookButton = document.querySelector(".addBook")
+addBookButton.addEventListener("click", (e) => {
+    let content = document.querySelector(".content")
+    createBookForm();
 })
-
-
-
-
-let submit = document.getElementById("submitbtn");
-
-
-
-
-
-function openForm() {
-  document.getElementById("myForm").style.display = "block";
-}
-
-function closeForm() {
-  document.getElementById("title").value = "";
-   document.getElementById("author").value = "";
-  document.getElementById('pages').value="";
- 
-  document.getElementById("myForm").style.display = "none";
-}
