@@ -42,21 +42,44 @@ margin: 0px;
     width: 100%;
     background-color: cadetblue;
     /* display: inline; */
-    align-items: center;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    padding: 0.5rem;
     
 }
-.book-form {
-
+.book-form{
+    z-index: 5px;
     display: flex;
     flex-direction: column-reverse;
-    margin: 0 auto;
+    margin-left: auto ;
+
 }
+
+
 .formfield{
     height: 2rem;
-    width: 8rem;
+    width: 16rem;
+    border: none;
 }
+.submitButton{
+    height: 2rem;
+    width: 16rem;
+    border: 2px ;
+   
+}
+
+
 .footer{
     height: 10%;
     width: 100%;
     background-color: black;
+}
+
+.bookTile{
+    height: 10rem;
+    width: 10rem;
+    border: 2px orange solid;
+    background-color: chartreuse;
+    padding-left: 1rem;
 }
