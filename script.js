@@ -45,13 +45,15 @@ let formdiv = document.createElement('div');
 formdiv.setAttribute('id','form');
 var form = document.createElement("form");
 let counter = 0;
+let bookTileDiv = document.createElement("div");
+bookTileDiv.classList.add("booktilediv");
 
 
 //Function to generate form which would take book information.
 // Function would apply when Add Book button is clicked.
 function createBookForm() {
     
-       
+       bookTileDiv.style.display = "none"
     
         
         let form = document.createElement("form");
@@ -124,7 +126,7 @@ addBookButton.addEventListener("click", (e) => {
 // Events to happen when submit button of form is clicked. 
 // Events are: Getting data from the form and storing in the myLibrary[] and closing the form
 submitButton.addEventListener('click', (e) => {
-            
+            bookTileDiv.style.display = "flex"
     let bookName = nameField.value;
     let authorName = authorField.value;
     let noOfPages = pagesField.value;
@@ -147,33 +149,35 @@ submitButton.addEventListener('click', (e) => {
 function showingBookTiles(counter){
     
    
-    let bookTile = document.createElement('div');
+    
     
     for(let x = counter; x< myLibrary.length; x++){
         let name = myLibrary[x].name;
         let author = myLibrary[x]. author;
         let NOP = myLibrary[x].pages;
         let status = myLibrary[x].status;
-        
+        let bookTile = document.createElement('div');
         bookTile.classList.add("bookTile");
         
-        let tileName = document.createElement("h1");
+        
+        let tileName = document.createElement("h2");
         tileName.innerHTML = name;
         bookTile.appendChild(tileName);
         
 
-        let tileAuthor = document.createElement("h1");
+        let tileAuthor = document.createElement("h2");
         tileAuthor.innerHTML = author;
         bookTile.appendChild(tileAuthor);
 
-        let tilepages = document.createElement("h1");
+        let tilepages = document.createElement("h2");
         tilepages.innerHTML = NOP;
         bookTile.appendChild(tilepages);
 
-        let tileStatus = document.createElement("h1");
+        let tileStatus = document.createElement("h2");
         tileStatus.innerHTML = status;
         bookTile.appendChild(tileStatus);
-        content.appendChild(bookTile)
+        bookTileDiv.appendChild(bookTile)
+        content.appendChild(bookTileDiv)
        
     }
 }

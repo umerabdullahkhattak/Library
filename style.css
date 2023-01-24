@@ -24,6 +24,7 @@ height: 10%;
 width: 100%;
 background-color: antiquewhite;
 margin: 0px;
+padding: 0px;
 }
 .header p{
     font-size: 2rem;
@@ -42,14 +43,11 @@ margin: 0px;
     width: 100%;
     background-color: cadetblue;
     /* display: inline; */
-    display: flex;
-    justify-content: space-between;
-    flex-wrap: wrap;
-    padding: 0.5rem;
+    justify-content: center;
     
 }
 .book-form{
-    z-index: 5px;
+    margin-left: 50rem;
     display: flex;
     flex-direction: column-reverse;
     margin-left: auto ;
@@ -61,11 +59,14 @@ margin: 0px;
     height: 2rem;
     width: 16rem;
     border: none;
+    color: cadetblue;
+    background-color: aliceblue;
 }
 .submitButton{
     height: 2rem;
     width: 16rem;
     border: 2px ;
+    background-color: chartreuse;
    
 }
 
@@ -73,13 +74,23 @@ margin: 0px;
 .footer{
     height: 10%;
     width: 100%;
-    background-color: black;
+    background-color: aliceblue;
+}
+.booktilediv{
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    /* padding: 0.5rem; */
 }
 
 .bookTile{
     height: 10rem;
     width: 10rem;
-    border: 2px orange solid;
-    background-color: chartreuse;
+    color: cadetblue;
+    border: 2px black inset;
+    background-color: antiquewhite;
     padding-left: 1rem;
+    
+    border-radius: 10px;
+    margin: 0.5rem;
 }
